@@ -1,0 +1,263 @@
+#ATIVIDADE DESCONTO PYTHON
+
+print('Bem-Vindo a Loja do <Nikolas>')
+#Entrada de dados para verificação do desconto
+valor = float(input('Entre com o valor unitário do produto: ')) #Valor unitario
+qntd = int(input('Entre com a quantidade do produto: ')) #Quantidade
+print('O valor sem desconto foi R${:.2f}'.format(valor*qntd)) #Valor sem desconto
+#Validação do valor do desconto
+if (valor*qntd >= 10000):
+    print('O valor com desconto foi R${:.2f} (desconto 11%)'.format(valor*qntd*0.89)) #Valor com desconto de 11%
+elif (valor*qntd >= 6000 and valor*qntd < 10000):
+    print('O valor com desconto foi R${:.2f} (desconto 7%)'.format(valor * qntd * 0.93)) #Valor com desconto de 7%
+elif (valor*qntd >= 2500 and valor*qntd < 6000):
+    print('O valor com desconto foi R${:.2f} (desconto 4%)'.format(valor * qntd * 0.96)) #Valor com desconto de 4%
+else:
+    print('O valor com desconto foi R${:.2f} (desconto 0%)'.format(valor * qntd)) #Valor com desconto de 0%
+
+
+
+#ATIVIDADE AÇAITERIA PYTHON
+
+# Menu do Cardápio
+boas_vindas = ('Bem-vindo a Loja de Gelados do Nikolas')
+cumprimeto_boas_vindas = len(boas_vindas)
+cardapio_centralizado = 'Cardápio'.center(cumprimeto_boas_vindas, '-')
+descricao_centralizado = ('| Tamanho |' + ' Cupuaçu (CP) ' + '| Açaí (AC) |').center(cumprimeto_boas_vindas, '-')
+p_centralizado = ('|    P    |' + '   R$ 10,00   ' + '|  R$ 12,00 |').center(cumprimeto_boas_vindas, '-')
+m_centralizado = ('|    M    |' + '   R$ 15,00   ' + '|  R$ 17,00 |').center(cumprimeto_boas_vindas, '-')
+g_centralizado = ('|    G    |' + '   R$ 19,00   ' + '|  R$ 21,00 |').center(cumprimeto_boas_vindas, '-')
+print(boas_vindas)
+print(cardapio_centralizado)
+print(descricao_centralizado)
+print(p_centralizado)
+print(m_centralizado)
+print(g_centralizado)
+print('-' * cumprimeto_boas_vindas)
+valor_total = 0
+
+# Validação de tamanho e sabor
+while True:
+    sabor = input('Entre com o sabor desejado (CP/AC): ')  # Entrada do sabor
+
+    # Loop para entrada do sabor correto
+    while sabor.upper() != 'AC' and sabor.upper() != 'CP':
+        print('Sabor inválido. Tente novamente.')
+        sabor = input('Entre com o sabor desejado (CP/AC): ')
+
+    tamanho = input('Entre com o tamanho desejado (P/M/G): ')  # Entrada do tamanho
+
+    # Loop para entrada do tamanho
+    while tamanho.upper() != 'G' and tamanho.upper() != 'M' and tamanho.upper() != 'P':
+        print('Tamanho inválido. Tente novamente.')
+        tamanho = input('Entre com o Tamanho desejado (P/M/G): ')
+
+    # Verificação do pedido solicitado
+    if (sabor.upper() == 'CP'):
+        if (tamanho.upper() == 'P'):
+            valor_total = valor_total + 9
+            print('Você pediu CUPUAÇU no tamanho P: R$9,00')
+        elif (tamanho.upper() == 'M'):
+            valor_total = valor_total + 14
+            print('Você pediu CUPUAÇU no tamanho M: R$14,00')
+        elif (tamanho.upper() == 'G'):
+            valor_total = valor_total + 18
+            print('Você pediu CUPUAÇU no tamanho G: R$18,00')
+    elif (sabor.upper() == 'AC'):
+        if (tamanho.upper() == 'P'):
+            valor_total = valor_total + 11
+            print('Você pediu AÇAI no tamanho P: R$11,00')
+        elif (tamanho.upper() == 'M'):
+            valor_total = valor_total + 16
+            print('Você pediu AÇAI no tamanho M: R$16,00')
+        elif (tamanho.upper() == 'G'):
+            valor_total = valor_total + 20
+            print('Você pediu AÇAI no tamanho G: R$20,00')
+
+    # Verifficação de novo pedido caso haja
+    seguir = input('Deseja mais alguma coisa (S / Digite outra tecla): ')
+    if seguir.upper() == 'S':
+        continue
+    else:
+        break
+
+print('O valor total a ser pago: R${:.2f}'.format(valor_total))  # Valor pago no final
+
+
+
+#ATIVIDADE FOTOCOPIADORA PYTHON
+
+#Função para verificar serviço
+def escolha_servico(x,y):
+    servico = input('Entre com o serviço desejado\nDIG - Digitalização\nICO - Impressão Colorida\nIBO - Impressão Preto e Branco\nFOT - Fotocopia\n>>')
+    while servico.upper()!='DIG' and servico.upper()!='ICO' and servico.upper()!='FOT' and servico.upper()!='ICO':
+        print('Escolha Inválida.\nEntre com o tipo de serviço desejado novamente.\n')
+        servico = input('Entre com o serviço desejado\nDIG - Digitalização\nICO - Impressão Colorida\nIBO - Impressão Preto e Branco\nFOT - Fotocopia\n>>')
+    if servico.upper()=='DIG':
+        print ('O valor do serviço é R$1,10 por página.')
+        valor = 1.10
+    elif servico.upper()=='ICO':
+        print('O valor do serviço é R$1,00 por página.')
+        valor = 1.00
+    elif servico.upper()=='IBO':
+        print('O valor do serviço é R$0,40 por página.')
+        valor = 0.40
+    elif servico.upper()=='FOT':
+        print('O valor do serviço é R$0,20 por página.')
+        valor = 0.20
+    return servico.upper(),valor
+
+#Função para definir número de páginas
+def num_pagina(x,y):
+    while True:
+        try:
+            paginas = int(input('Entre com o número de páginas: '))
+        except ValueError:
+            print('O que foi digitado não corresponde a valor numérico.\nPor favor, entre com o número de páginas novamente.')
+        else:
+            if paginas >= 20000:
+                print('Não aceitamos tantas páginas de uma vez.\nPor favor, entre com o número de páginas novamente.')
+            else:
+                if paginas>=2000 and paginas<20000:
+                    desconto = 0.75
+                    print ('O desconto será de 25%.')
+                elif paginas>=200 and paginas<2000:
+                    desconto = 0.80
+                    print('O desconto será de 20%.')
+                elif paginas>=20 and paginas<200:
+                    desconto = 0.85
+                    print('O desconto será de 15%.')
+                elif paginas<20:
+                    print('Não haverá desconto')
+                    desconto = 1
+                return paginas,desconto
+
+#Função para verificar serviços extras
+def servico_extra(x,y):
+    while True:
+        try:
+            print('Deseja adicionar mais algum serviço?\n1 - Encadernação Simples - R$15,00\n2 - Encardenação Capa Dura - R$40,00\n0 - Não desejo mais nada')
+            extra = int(input('>>'))
+        except ValueError:
+            print('Opção invalida.')
+        else:
+            if (extra != 0 and extra != 1 and extra != 2):
+                print('Opção invalida.')
+            else:
+                if extra == 0:
+                    val_extra = 0
+                elif extra == 1:
+                    val_extra = 15
+                elif extra == 2:
+                    val_extra = 40
+                return extra,val_extra
+
+
+
+print('Bem Vindo à Fotocopiadora do Nikolas')
+servico,valor = escolha_servico('',int) #Inicia função para verificar serviço desejado
+paginas,desconto = (num_pagina(int,float)) #Inicia função para verificar quantidade de páginas
+extra, val_extra = servico_extra(int,int) #Inicia função para verificar se deseja extra
+#Exibir as informações digitadas e o Total
+print('Total (R$) {} ((Serviço: {} * Páginas: {} * Desconto {}) + Extra(s): {})'.format(((valor*paginas*desconto)+val_extra),valor,paginas,desconto,val_extra))
+
+
+
+#ATIVIDADE LIVRARIA PYTHON
+
+# Função para cadastrar livro
+def cadastrar_livro(id):
+    titulo = ('Bem-vindo ao gerenciamento de Pessoas do Nikolas 4582209')
+    comprimento_titulo = len(titulo)
+    print('*'*comprimento_titulo)
+    print('Menu Cadastrar livro'.center(comprimento_titulo,'-'))
+    nome = input("Digite o nome do livro: ")
+    autor = input("Digite o autor do livro: ")
+    editora = input("Digite a editora do livro: ")
+    livro = {"id": id, "nome": nome.upper(), "autor": autor.upper(), "editora": editora.upper()} # Criação do dicionário com os dados do livro
+    lista_livro.append(livro) # Adicionando o dicionário à lista de livros
+
+
+# Função para consultar livros
+def consultar_livro():
+    titulo = ('Bem-vindo ao gerenciamento de Pessoas do Nikolas 4582209')
+    comprimento_titulo = len(titulo)
+    print('*' * comprimento_titulo)
+    print('Menu Consultar Livro'.center(comprimento_titulo, '-'))
+    opcao = int(input("1. Consultar Todos os Livros\n2. Consultar Livro por id\n3. Consultar Livro(s) por Autor\n4. Retornar\n>>"))
+    if opcao == 1:
+        print('-' * comprimento_titulo)
+        for livro in lista_livro:
+            print('ID:', livro['id'])
+            print('Nome:',livro['nome'])
+            print('Editora',livro['editora'])
+            print('Autor:', livro['autor'])
+    elif opcao == 2:
+        id_consulta = int(input("Digite o ID do livro: "))
+        print('-' * comprimento_titulo)
+        for livro in lista_livro:
+            if livro["id"] == id_consulta:
+                print('ID:', livro['id'])
+                print('Nome:', livro['nome'])
+                print('Editora', livro['editora'])
+                print('Autor:', livro['autor'])
+                break
+        else:
+            print("Livro não encontrado.")
+    elif opcao == 3:
+        autor_consulta = input("Digite o nome do autor: ")
+        print('-' * comprimento_titulo)
+        for livro in lista_livro:
+            if livro["autor"] == autor_consulta.upper():
+                print('ID:', livro['id'])
+                print('Nome:', livro['nome'])
+                print('Editora', livro['editora'])
+                print('Autor:', livro['autor'])
+    elif opcao == 4:
+        pass  # Retorna ao menu principal
+    else:
+        print("Opção inválida.")
+
+
+# Função para remover livro
+def remover_livro():
+    id_remocao = int(input("Digite o ID do livro a ser removido: "))
+    for livro in lista_livro:
+        if livro["id"] == id_remocao:
+            lista_livro.remove(livro)
+            print("Livro removido com sucesso.")
+            break
+    else:
+        print("Livro não encontrado.")
+
+
+# Estrutura de menu principal
+titulo = ('Bem-vindo ao gerenciamento de Pessoas do Nikolas')
+print(titulo)
+# Inicialização da lista de livros e variável global de ID
+lista_livro = []
+id_global = 0
+comprimento_titulo = len(titulo)
+while True:
+    try:
+        print('*'*comprimento_titulo)
+        print('Menu Principal'.center(comprimento_titulo,'-'))
+        print("1- Cadastrar Livro\n2- Consultar Livro(s)\n3- Remover Livro\n4- Sair")
+        opcao = int(input("Digite a opção desejada: "))
+    except ValueError:
+        print('Opção inválida.')
+    else:
+        if opcao == 1:
+            id_global += 1
+            cadastrar_livro(id_global)
+        elif opcao == 2:
+            consultar_livro()
+        elif opcao == 3:
+            remover_livro()
+        elif opcao == 4:
+            print("Encerrando o programa...")
+            break
+        else:
+            print("Opção inválida.")
+
+

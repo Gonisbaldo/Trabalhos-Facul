@@ -1,0 +1,103 @@
+#Exercicio de fixação
+
+print(2+2<4)
+print(7//3==1+1)
+print((3**2)+(4**2)==25)
+print(+4+6>1)
+print(1387%19==0)
+print(31%2==0)
+print(min(34,29,31)<30)
+
+#Condicionais simples
+
+idade = int(input('Digite quantos anos você possui: '))
+if (idade>60):
+    print("Você tem direito aos beneficios.")
+
+escudo = float(input('Digite a quantidade de armadura do escudo:'))
+dano = float(input('Digite o valor do dano causado:'))
+if (dano>10 and escudo==0):
+    print('Voce esta morto!')
+
+sentido = input('Digite a direção percorrida, (Norte, Sul, Leste, Oeste, Parado): ')
+if (sentido=='Norte' or sentido=='Sul' or sentido=='Leste' or sentido=='Oeste'):
+    print('Você escapou!')
+    
+#Condicional composta
+
+ano = int(input('Digite o ano no qual se encontra: '))
+if (ano%4==0):
+    print('O ano é bissexto!')
+else:
+    print('O ano não é bissexto!')
+
+norte = (input('Digite "1" caso você esteja indo ao Norte e "0" se não: '))
+sul = (input('Digite "1" caso você esteja indo ao Sul e "0" se não: '))
+if (norte and sul):
+    print('Decida-se!')
+else:
+    print('Você escolheu um caminho!')
+
+#Execicio dos Triangulos
+
+co = int(input('Digite o tamanho do cateto oposto: '))
+ca = int(input('Digite o tamanho do cateto adjacente: '))
+hi = int(input('Digite o tamanho da hipotenusa: '))
+
+if (ca=='0' or co=='0' or hi=='0' or ca+co>hi or co+hi>ca or ca+hi>co):
+    print('Não é um triangulo!')
+else:
+    if (ca==co==hi):
+        print('O triangulo é equilatero.')
+    elif (ca==co or ca==hi or co==hi):
+        print('O triangulo é isosceles.')
+    else:
+        print('O triangulo é escaleno.')
+
+#Exercicio dos operadores aritméticos
+
+num1 = int(input('Digite o primeiro numero: '))
+num2 = int(input('Digite o segundo numero: '))
+arit = input('Digite o operador lógico: ')
+if (arit=='+') or (arit=='-') or (arit=='/') or (arit=='*'):
+    if (arit=='+'):
+        print('A soma dos numeros é:',num1+num2)
+    elif (arit=='-'):
+        print('A subtração dos numeros é:',num1-num2)
+    elif (arit=='/'):
+        print('A divisão dos numeros é:',num1/num2)
+    elif (arit=='*'):
+        print('A multiplicação dos numeros é:',num1*num2)
+else:
+    print('O operador lógico não foi reconhecido.')
+
+#Exercicio calculo energia
+
+# R = residencia, C = comercio, I = industria
+
+kw = float(input('Digite a quantidade de KWh consumido: '))
+local = input('Digite o local de consumo, "R=Residencia", "C=Comercio", "I=Industria":')
+if (local=='R' or local=='C' or local=='I'):
+    if (local=='R'):
+        if(kw<=500):
+            valor=kw*0.40
+            print('O valor da sua conta de energia é: R$',valor)
+        else:
+            valor=kw*0.65
+            print('O valor da sua conta de energia é: R$',valor)
+    elif (local=='C'):
+        if(kw<=1000):
+            valor=kw*0.55
+            print('O valor da sua conta de energia é: R$',valor)
+        else:
+            valor=kw*0.60
+            print('O valor da sua conta de energia é: R$',valor)
+    elif (local=='I'):
+        if(kw<=5000):
+            valor=kw*0.55
+            print('O valor da sua conta de energia é: R$',valor)
+        else:
+            valor=kw*0.60
+            print('O valor da sua conta de energia é: R$',valor)
+else:
+    print('Não é um local de consumo reconhecido.')

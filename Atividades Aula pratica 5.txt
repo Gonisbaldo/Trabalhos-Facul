@@ -1,0 +1,113 @@
+#Fatorial do numero
+
+def validacao (pergunta,min):
+    """
+    :param pergunta: Entrada do valor 
+    :param min: Conferencia se é positivo o valor
+    :return: 
+    """
+    y=-1
+    while (y<min):
+        y=int(input(pergunta))
+        return int(y)
+def fatorial (x):
+    """
+    :param x: Numero para fatoração 
+    :return: Numero Fatorado
+    """
+    total=1
+    if (x==0):
+        return total
+    for i in range(1,x+1,1):
+        total*= i
+    return total
+
+fat = validacao('Digite um numero para fatorar: ',0)
+print('O fatorial de {} é: {}'.format(fat,fatorial(fat)))
+
+# Lista de jogos colecionador
+
+def validacao(pergunta, min, max):
+    """
+    :param pergunta: Numero do menu.
+    :param min: Menor que 0.
+    :param max: Maior que 3.
+    :return: Numero selecionado do menu.
+    """
+    y=int(input(pergunta))
+    while ((y<min) or (y>max)):
+        y=int(input(pergunta))
+    return y
+
+def cadastro(arquivo,jogo,videogame):
+    """
+    :param arquivo: Arquivo para inserção.
+    :param jogo: Cadastrar nome do Jogo.
+    :param videogame: Cadastrar nome do Video Game.
+    """
+    try:
+        a=open(arquivo,'at')
+    except:
+        print("Erro ao abrir o arquivo.")
+    else:
+        a.write('{};{}\n'.format(nome_jogo,nome_videogame))
+    finally:
+        a.close()
+
+def listagem(arquivo):
+    """
+    :param arquivo: Arquivo para leitura.
+    """
+    try:
+        a=open(arquivo,'rt')
+    except:
+        print('Erro ao ler o arquivo')
+    else:
+        print(a.read())
+    finally:
+        a.close()
+def cria_arquivo(jogos):
+    """
+    :param jogos: Cria arquivo para armazenamento.
+    """
+    try:
+        a=open(jogos,'wt+')
+        a.close()
+    except:
+        print('Erro na criação do arquivo.')
+    else:
+        print('Arquivo {} foi criado com sucesso.'.format(jogos))
+def existe_arquivo(jogos):
+    """
+    :param jogos: Verifica se o arquivo existe.
+    """
+    try:
+        a=open(jogos,'rt')
+        a.close()
+    except FileNotFoundError:
+        return False
+    else:
+        return True
+arquivo = 'jogos.txt'
+if (existe_arquivo(arquivo)):
+    print('Arquivo localizado.')
+else:
+    print('Arquivo não existente.')
+    cria_arquivo(arquivo)
+while True:
+    print('Menu')
+    print('1- Cadastrar novo item')
+    print('2- Listar cadastros')
+    print('3- Sair')
+    menu = (validacao('Digite um numero do menu: ',1,3))
+    if(menu==1):
+        print('Digite o nome do novo jogo da coleção:\n')
+        nome_jogo=input('Digite o nome do jogo: ')
+        nome_videogame = input('Digite o nome do Video Game: ')
+        cadastro(arquivo,nome_jogo,nome_videogame)
+    elif(menu==2):
+        print('Os jogos da coleção até o momento são:\n')
+        listagem(arquivo)
+    elif(menu==3):
+        print('Encerrando programa.')
+        break

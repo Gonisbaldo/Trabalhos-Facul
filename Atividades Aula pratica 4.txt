@@ -1,0 +1,75 @@
+#Exercicio de fixação
+
+for i in range(3,13,1):
+    print('O numero da sequencia é {}'.format(i))
+i=3
+while(i<13):
+    print('O numero da sequencia é {}'.format(i))
+    i+=1
+i=0
+for i in range(0,9,2):
+    print('O numero da sequencia é {}'.format(i))
+i=0
+while(i<9):
+    print('O numero da sequencia é {}'.format(i))
+    i=i+2
+
+#Exercicio dos operadores aritméticos
+
+num1=()
+num2=()
+op=()
+while True:
+    num1= input('Digite o primeiro valor para a operação, caso deseje sair do programa digite "Saida": ')
+    if (num1=='Saida'):
+        print('Obrigado por utilizar o programa!')
+        break
+    else:
+        num2= input('Digite o segundo valor para a operação, caso deseje sair do programa digite "Saida": ')
+        if (num2 == 'Saida'):
+            print('Obrigado por utilizar o programa!')
+            break
+        else:
+            op = input('Digite o operador lógico, caso deseje sair do programa digite "Saida": ')
+            if (op=='Saida'):
+                print('Obrigado por utilizar o programa!')
+                break
+            elif (op=='+'):
+                total=float(num1)+float(num2)
+            elif (op == '-'):
+                total = float(num1)-float(num2)
+            elif (op=='*'):
+                total=float(num1)*float(num2)
+            elif (op=='/'):
+                total=float(num1)/float(num2)
+            print('A operação dos números digitados é: {}{}{}={}'.format(num1,op,num2,total))
+
+#Exercicio cinema
+
+pessoas = 0
+media = 0
+faturamento = 0
+a1 = 0
+a2 = 0
+a3 = 0
+while True:
+    idade = input('Digite sua idade para adquirir o ingresso: ')
+    if (idade=='sair'):
+        break
+    media = media+int(idade)
+    if (int(idade) < 3):
+        print('Seu ingresso é gratuito')
+        a1+=1
+    elif (int(idade) <= 12):
+        print('Seu ingresso custa R$15')
+        a2+=1
+    else:
+        print('Seu ingresso custa R$30')
+        a3+=3
+if (int(a1+a2+a3)!=0):
+    faturamento = int((a2*15)+(a3*30))
+    print('Seu faturamento foi de R$ {}'.format(faturamento))
+    pessoas = int(a1+a2+a3)
+    print('A quantidade de pessoas presentes foi de: {}'.format(pessoas))
+    media = media/pessoas
+    print('A media de idade é de: {}'.format(media))

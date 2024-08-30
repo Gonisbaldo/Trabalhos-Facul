@@ -1,0 +1,18 @@
+#Exercicio sobre preço com base em desconto
+
+valor = float(input('Digite o valor do produto:'))
+percent = float(input('Digite o valor percentual do desconto à ser aplicado:'))
+print('O valor do produto com o desconto é: ', valor-((valor/100)*percent))
+
+#Exercicio sobre Km e preço de carro alugado
+
+km = float(input('Digite a quantidade de Km rodados: '))
+dias = int(input('Digite a quantidade de dias alugados: '))
+print ('O valor total da locação do carro solicitado é de: R$', ((km*0.15)+(dias*60)))
+
+#Comprimento da frase digitada
+
+frase = input('Digite uma frase: ')
+tamanho = len(frase)
+frase2 = frase[:int(tamanho/2)]
+print('A metade da frase digitada é:',frase2, 'E os dois ultimos caracteres da metade da frase digitada são:', (frase2[-2:]))
